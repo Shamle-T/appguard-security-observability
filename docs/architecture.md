@@ -1,0 +1,4 @@
+# Architecture
+
+Architecture notes placeholder.
+
