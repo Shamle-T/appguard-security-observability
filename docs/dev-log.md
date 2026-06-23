@@ -2,36 +2,44 @@
 
 # appguard-security-observability
 Backend/cloud SaaS platform for ingesting security events, detecting suspicious activity, and managing alerts/incidents.
+# Development Log
 
-## MVP Features
+## 21 June 2026 - Day 1
 
-- [ ] User registration and login
-- [ ] JWT authentication
-- [ ] Role-based access control: Admin, Analyst, Viewer
-- [ ] Workspace creation
-- [ ] Application registration inside workspaces
-- [ ] API key generation and revocation
-- [ ] Security event ingestion endpoint
-- [ ] Event storage in PostgreSQL
-- [ ] Repeated failed login detection
-- [ ] Suspicious request burst detection
-- [ ] Alert creation
-- [ ] Incident workflow: open, investigating, resolved
-- [ ] Audit logs
-- [ ] Dashboard summary API
-- [ ] React dashboard
-- [ ] Demo simulator
-- [ ] Docker Compose setup
-- [ ] Pytest test suite
-- [ ] GitHub Actions CI
-- [ ] Deployment
+### Goal
+Set up the AppGuard project foundation, architecture, repo structure, and MVP scope.
 
-## Out of Scope for Version 1
+### Completed
+- Created project repository
+- Drafted project architecture
+- Defined MVP features
+- Created initial folder structure
+- Drafted data model v0
+- Drafted API contract v0
 
-- Kubernetes
-- Microservices
-- Machine learning detection
-- Full SIEM features
-- Complex notification systems
-- Perfect UI design
-- Multi-cloud deployment
+### Notes
+AppGuard will be built as a modular monolith first. The focus is backend/cloud engineering, with security observability as the domain.
+
+### Next
+Set up FastAPI backend skeleton, health check endpoint, config structure, and error handling pattern.
+
+
+## 22 June 2026 - Day 2
+
+### Goal
+Set up the FastAPI backend skeleton with clean structure, config, health check, and basic error handling.
+
+### Completed
+- Created backend folder structure
+- Added FastAPI application entry point
+- Added API v1 router
+- Added health check endpoint
+- Added config system with pydantic-settings
+- Added basic custom exception pattern
+- Verified `/health`, `/api/v1/health`, and `/docs`
+
+### Notes
+The backend is now ready for database integration and PostgreSQL setup.
+
+### Next
+Set up PostgreSQL using Docker Compose and connect the backend to the database.
