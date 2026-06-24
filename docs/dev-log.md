@@ -43,3 +43,25 @@ The backend is now ready for database integration and PostgreSQL setup.
 
 ### Next
 Set up PostgreSQL using Docker Compose and connect the backend to the database.
+
+
+## 23 June 2026 - Day 3
+
+### Goal
+Set up PostgreSQL with Docker Compose and connect the FastAPI backend to the database.
+
+### Completed
+- Added PostgreSQL service in Docker Compose
+- Added backend Dockerfile
+- Added backend service in Docker Compose
+- Added SQLAlchemy database engine
+- Added database session setup
+- Added DATABASE_URL configuration
+- Added database health check endpoint
+- Verified `/api/v1/health/db`
+
+### Notes
+The backend now runs with PostgreSQL through Docker Compose. Inside Docker, the database host is `db`; outside Docker, it is `localhost`.
+
+### Next
+Create SQLAlchemy models for User, Workspace, App, Event, Alert, Incident, and AuditLog.

@@ -3,8 +3,10 @@
 # Creates the end point that returns the earlier created shape in schema health.py
 
 from fastapi import APIRouter
+from sqlalchemy import text
 
 from app.core.config import settings
+from app.db.session import engine
 from app.schemas.health import HealthResponse
 
 router = APIRouter(prefix="/health", tags=["Health"])
@@ -20,3 +22,23 @@ def health_check():
         version=settings.app_version,
         environment=settings.environment,
     )
+
+
+@router.get("/db")
+def database_health_check():
+    try:
+        # Uses the db link to establish a connection
+        with engine.connect() as connection:
+            connection.execute(text("SELECT 1"))
+
+        return {"status": "ok", "database": "connected"}
+
+    except Exception as exc:
+        raise HTTPException(
+            status_code=503,
+            defaults={
+                "status": "error",
+                "database": "not connected",
+                "message": str(exc),
+            },
+        )

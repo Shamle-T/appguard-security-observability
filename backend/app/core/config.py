@@ -11,6 +11,10 @@ class Settings(BaseSettings):
     environment: str = "development"
     api_v1_prefix: str = "/api/v1"
 
+    database_url: str = (
+        "postgresql+psycopg://appguard:appguard_password@localhost:5432/appguard_db"
+    )
+
     model_config = SettingsConfigDict(
         env_file=".env", env_file_encoding="utf-8", extra="ignore"
     )

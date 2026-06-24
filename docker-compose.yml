@@ -1,1 +1,39 @@
 # Docker Compose placeholder
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: appguard_postgres
+    environment:
+      POSTGRES_USER: appguard
+      POSTGRES_PASSWORD: appguard_password
+      POSTGRES_DB: appguard_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U appguard -d appguard_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: appguard_backend
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: AppGuard
+      APP_VERSION: 0.1.0
+      ENVIRONMENT: development
+      API_V1_PREFIX: /api/v1
+      DATABASE_URL: postgresql+psycopg://appguard:appguard_password@db:5432/appguard_db
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
