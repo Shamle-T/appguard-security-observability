@@ -65,3 +65,31 @@ The backend now runs with PostgreSQL through Docker Compose. Inside Docker, the 
 
 ### Next
 Create SQLAlchemy models for User, Workspace, App, Event, Alert, Incident, and AuditLog.
+
+
+## 24 June 2026 - Day 4
+
+### Goal
+Create the initial SQLAlchemy database models for AppGuard.
+
+### Completed
+- Added SQLAlchemy Base
+- Added timestamp mixin
+- Created User model
+- Created Workspace model
+- Created WorkspaceMember model
+- Created Application model
+- Created APIKey model
+- Created Event model
+- Created Alert model
+- Created Incident model
+- Created AuditLog model
+- Registered models in `app/models/__init__.py`
+- Created tables automatically on backend startup
+- Verified database connectivity through `/api/v1/health/db`
+
+### Notes
+The database schema v0 now supports the core AppGuard SaaS structure: users, workspaces, applications, API keys, security events, alerts, incidents, and audit logs.
+
+### Next
+Build the first event creation endpoint with validation so events can be posted and stored.
