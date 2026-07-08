@@ -21,7 +21,7 @@ class Workspace(Base, TimestampMixin):
     )
 
     # relationship(Name of the model which it connects to, back populates -> name of the relationship in the opposite model )
-    owner = relationship("User", back_populates="owned_workspaces")
+    owner = relationship("User", back_populates="owned_workspace")
 
     members = relationship(
         "WorkspaceMember", back_populates="workspace", cascade="all, delete-orphan"

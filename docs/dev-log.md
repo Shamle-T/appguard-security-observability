@@ -93,3 +93,27 @@ The database schema v0 now supports the core AppGuard SaaS structure: users, wor
 
 ### Next
 Build the first event creation endpoint with validation so events can be posted and stored.
+
+## 8 July 2026 - Day 5
+
+### Goal
+Build the first event creation endpoint with validation and database storage.
+
+### Completed
+- Added event request and response schemas
+- Added event service layer
+- Added event creation endpoint
+- Added event listing endpoint
+- Registered event routes in API v1 router
+- Added development seed script
+- Created demo user, workspace, and application data
+- Verified event creation through Swagger
+- Verified event listing through Swagger
+- Verified validation for allowed event types
+- Verified events are stored in PostgreSQL
+
+### Notes
+The event endpoint currently accepts `application_id` directly for development testing. Later, this will be replaced by API key authentication through the `/ingest/events` endpoint.
+
+### Next
+Add event querying and filtering by event type, IP address, user identifier, application, and date range.
